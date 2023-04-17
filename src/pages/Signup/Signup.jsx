@@ -1,6 +1,7 @@
 import { Form, Input, Button, Heading1 } from '@/components';
 import styles from "./Signup.module.css";
 import { useRef } from 'react';
+import axios from 'axios';
 
 export function Signup() {
   const emailRef = useRef(null);
@@ -34,15 +35,32 @@ export function Signup() {
     }
   }
 
+  // 회원가입 통신 함수
+  function createUserWithEmailAndPassword(email, password) {
+    axios.post('https://www.pre-onboarding-selection-task.shop/auth/signup', {
+      email: email,
+      password: password,
+    }, {headers: {
+      "Content-Type": "application/json",
+    }})
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   // 회원가입 기능 함수
   function handleClickToRegister() {
     if(checkEmailInput() && checkPasswordInput()){
+      createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
       alert("회원가입 성공");
     } else {
-      alert("회원가입 실패")
       emailRef.current.value = "";
       passwordRef.current.value = "";
       buttonRef.current.disabled = true;
+      alert("회원가입 실패")
     }
   }
 
