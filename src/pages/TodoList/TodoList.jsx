@@ -1,4 +1,4 @@
-import { Form, Heading1, Input, Button } from '@/components';
+import { Form, Heading1, Input, Button, Todo } from '@/components';
 import styles from "./TodoList.module.css";
 import { useRef } from 'react';
 
@@ -17,6 +17,11 @@ export function TodoList() {
       <Input data-testid="new-todo-input" className={styles.input} forwardRef={todoListRef} name="todo" label="이메일" type="text" placeholder='할 일을 입력하세요' />
       <Button data-testid="new-todo-add-button" className={styles.button} onClick={handleClick}>추가</Button>
     </Form>
+    <ul>
+      <Todo>TODO 1</Todo>
+      <Todo>TODO 1</Todo>
+      <Todo>TODO 1</Todo>
+    </ul>
   </div>
   )
 }
