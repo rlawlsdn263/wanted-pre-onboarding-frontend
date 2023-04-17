@@ -50,9 +50,9 @@ export function Signup() {
     <div className={styles.signup}>
       <Heading1 className={styles.h1}>회원가입</Heading1>
       <Form legend="회원가입" className={styles.form}>
-        <Input className={styles.input} forwardRef={emailRef} onChange={handleButton} name="email" label="이메일" type="text" placeholder='test@test.com'></Input>
-        <Input className={styles.input} forwardRef={passwordRef} onChange={handleButton} name="password" label="비밀번호" type="password" placeholder='12345678'></Input>
-        <Button className={styles.button} forwardRef={buttonRef} onClick={handleClickToRegister}>회원가입</Button>
+        <Input data-testid="email-input" className={styles.input} forwardRef={emailRef} onChange={handleButton} name="email" label="이메일" type="text" placeholder='test@test.com'></Input>
+        <Input data-testid="password-input" className={styles.input} forwardRef={passwordRef} onChange={handleButton} name="password" label="비밀번호" type="password" placeholder='12345678'></Input>
+        <Button data-testid="signup-button" className={styles.button} forwardRef={buttonRef} onClick={handleClickToRegister}>회원가입</Button>
       </Form>
     </div>
   )
