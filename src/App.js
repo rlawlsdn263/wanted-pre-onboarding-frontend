@@ -1,10 +1,14 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { Signup, Signin, Todo } from "@/pages/index";
+import { Signup, Signin, Todo, Home } from "@/pages/index";
+import { PrivateRoutes, PrivateRoutes2 } from "@/utils";
 
 function App() {
   return (
     <div className="App">
       <ul className="navbar">
+        <li>
+          <Link to="/">홈</Link>
+        </li>
         <li>
           <Link to="/signup">회원가입</Link>
         </li>
@@ -16,9 +20,14 @@ function App() {
         </li>
       </ul>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/" element={<Home />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+        </Route>
+        <Route element={<PrivateRoutes2 />}>
+          <Route path="/todo" element={<Todo />} />
+        </Route>
       </Routes>
     </div>
   );
