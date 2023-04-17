@@ -1,3 +1,3 @@
-export function Button({type="button", children, ...rest }) {
-  return <button type={type} {...rest}>{children}</button>;
+export function Button({type="button", forwardRef, children, ...rest }) {
+  return <button type={type} ref={forwardRef} {...rest}>{children}</button>;
 }

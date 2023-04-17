@@ -5,7 +5,9 @@ import { useRef } from 'react';
 export function Signup() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const buttonRef = useRef(null);
 
+  // 이메일 유효성 검사 함수
   function checkEmailInput() {
     const regex = /@/;
     if (!regex.test(emailRef.current.value)) {
@@ -15,6 +17,7 @@ export function Signup() {
     }
   }
 
+  // 비밀번호 유효성 검사 함수
   function checkPasswordInput() {
     const regex = /^.{8,}$/;
     if (!regex.test(passwordRef.current.value)) {
@@ -24,11 +27,22 @@ export function Signup() {
     }
   }
 
+  // 버튼 활성화 함수
+  function handleButton() {
+    if(emailRef.current.value || passwordRef.current.value) {
+      buttonRef.current.disabled = false;
+    }
+  }
+
+  // 회원가입 기능 함수
   function handleClickToRegister() {
     if(checkEmailInput() && checkPasswordInput()){
       alert("회원가입 성공");
     } else {
       alert("회원가입 실패")
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      buttonRef.current.disabled = true;
     }
   }
 
@@ -36,9 +50,9 @@ export function Signup() {
     <div className={styles.signup}>
       <Heading1 className={styles.h1}>회원가입</Heading1>
       <Form legend="회원가입" className={styles.form}>
-        <Input className={styles.input} forwardRef={emailRef} name="email" label="이메일" type="text" placeholder='test@test.com'></Input>
-        <Input className={styles.input} forwardRef={passwordRef} name="password" label="비밀번호" type="password" placeholder='12345678'></Input>
-        <Button className={styles.button} onClick={handleClickToRegister}>회원가입</Button>
+        <Input className={styles.input} forwardRef={emailRef} onChange={handleButton} name="email" label="이메일" type="text" placeholder='test@test.com'></Input>
+        <Input className={styles.input} forwardRef={passwordRef} onChange={handleButton} name="password" label="비밀번호" type="password" placeholder='12345678'></Input>
+        <Button className={styles.button} forwardRef={buttonRef} onClick={handleClickToRegister}>회원가입</Button>
       </Form>
     </div>
   )
