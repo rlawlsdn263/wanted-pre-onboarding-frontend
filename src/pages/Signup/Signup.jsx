@@ -2,11 +2,15 @@ import { Form, Input, Button, Heading1 } from '@/components';
 import styles from "./Signup.module.css";
 import { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export function Signup() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const buttonRef = useRef(null);
+
+  // 페이지 리디렉션을 위한 navigate
+  const navigate = useNavigate();
 
   // 이메일 유효성 검사 함수
   function checkEmailInput() {
@@ -45,9 +49,15 @@ export function Signup() {
     }})
     .then(response => {
       console.log(response);
+      alert("회원가입 성공");
+      navigate('/signin');
     })
     .catch(error => {
       console.log(error);
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      buttonRef.current.disabled = true;
+      alert("회원가입 실패")
     });
   }
 
@@ -55,12 +65,6 @@ export function Signup() {
   function handleClickToRegister() {
     if(checkEmailInput() && checkPasswordInput()){
       createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-      alert("회원가입 성공");
-    } else {
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
-      buttonRef.current.disabled = true;
-      alert("회원가입 실패")
     }
   }
 
