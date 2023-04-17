@@ -23,8 +23,8 @@ export function Signin() {
       // JWT 토큰을 localStorage에 저장함
       localStorage.setItem("user", JSON.stringify(response.data));
       alert("로그인 성공!");
-      //로그인 성공할 경우 todo로 페이지 리디렉션을 해줌
-      navigate('/todo');
+      //로그인 성공할 경우 todolist로 페이지 리디렉션을 해줌
+      navigate('/todolist');
     })
     .catch(error => {
       console.log(error);

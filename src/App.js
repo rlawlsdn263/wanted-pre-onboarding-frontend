@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { Signup, Signin, Todo, Home } from "@/pages/index";
+import { Signup, Signin, Home, TodoList } from "@/pages/index";
 import { PrivateRoutes, PrivateRoutes2 } from "@/utils";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Link to="/signin">로그인</Link>
         </li>
         <li>
-          <Link to="/todo">투두리스트</Link>
+          <Link to="/todolist">투두리스트</Link>
         </li>
       </ul>
       <Routes>
@@ -26,7 +26,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
         </Route>
         <Route element={<PrivateRoutes2 />}>
-          <Route path="/todo" element={<Todo />} />
+          <Route path="/todolist" element={<TodoList />} />
         </Route>
       </Routes>
     </div>
