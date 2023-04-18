@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export function Todo({id, todo, isCompleted, setTodoList}) {
   
   const [update, setUpdate] = useState(false);
+  const [newInput, setNewInput] = useState("");
 
   /* const [isChecked, setIsChecked] = useState(false);
 
@@ -29,6 +30,29 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
       console.log(error);
     });
   } */
+
+  // useEffect(()=>{
+  //   getTodos();
+  // }, [deleteTodo(), updateTodo()])
+
+  //업데이트 기능
+  function updateTodo() {
+    const token = JSON.parse(localStorage.getItem("user")).access_token;
+    axios.put(`https://www.pre-onboarding-selection-task.shop/todos/${id}`, {
+      todo: newInput,
+      isCompleted: isCompleted,
+    }, {headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json",
+    }}).then(response => {
+      console.log(response);
+      getTodos();
+      setUpdate(!update);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 
   // 삭제가 될 때마다 다시 getTodos가 실행됨
   function getTodos() {
@@ -63,12 +87,17 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
     setUpdate(!update);
   }
 
+  function handleNewInput(e) {
+    setNewInput(e.target.value);
+  }
+
   return(
     <li className={styles.todo}>
       <label className={styles.label}>
         <input className={styles.checkbox} type="checkbox" /* checked={isChecked} onChange={handleIsChecked} */ />
         {
-          !update ? <span className={styles.span}>{todo}</span> : <input className={styles.input} data-testid="modify-input"/>
+          !update ? <span className={styles.span}>{todo}</span> : 
+          <input className={styles.input} data-testid="modify-input" onChange={handleNewInput}/>
         }
       </label>
         {
@@ -78,7 +107,7 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
             <button className={styles.delete} data-testid="delete-button" onClick={deleteTodo}>삭제</button>
           </> : 
           <>
-            <button className={styles.edit} data-testid="submit-button">제출</button>
+            <button className={styles.edit} data-testid="submit-button" onClick={updateTodo}>제출</button>
             <button className={styles.delete} data-testid="cancel-button" onClick={handleUpdate}>취소</button>
           </>
         }

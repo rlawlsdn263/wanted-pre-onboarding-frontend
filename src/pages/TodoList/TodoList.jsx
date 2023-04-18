@@ -58,7 +58,7 @@ export function TodoList() {
     <ul>
       {
       todoList.map((item) => {
-        return <Todo key={item.id} todo={item.todo} isCompleted={item.isCompleted} id={item.id} setTodoList={setTodoList}/>
+        return <Todo key={item.id} todo={item.todo} isCompleted={item.isCompleted} id={item.id} setTodoList={setTodoList} handleTodoInput={handleTodoInput}/>
       })
       }
     </ul>
