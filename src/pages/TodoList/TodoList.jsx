@@ -10,6 +10,7 @@ export function TodoList() {
   const [todoList, setTodoList] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
+  //input에 입력된 값을 state에 저장함
   function handleTodoInput(e) {
     setInputValue(e.target.value);
   }
@@ -23,7 +24,8 @@ export function TodoList() {
       "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     }}).then(response => {
-      console.log(response);
+      console.log(response.data);
+      setTodoList([...todoList, response.data]);
     })
     .catch(error => {
       console.log(error);
@@ -40,7 +42,7 @@ export function TodoList() {
     <ul>
       {
       todoList.map((item) => {
-        return <Todo>item</Todo>
+        return <Todo key={item.id} todo={item.todo} isCompleted={item.isCompleted} />
       })
       }
       {/* <Todo>TODO 1</Todo>
