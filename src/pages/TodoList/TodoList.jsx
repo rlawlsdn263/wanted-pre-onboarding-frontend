@@ -1,15 +1,30 @@
 import { Form, Heading1, Input, Button, Todo } from '@/components';
 import styles from "./TodoList.module.css";
-import { useId, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export function TodoList() {
 
-
-  // const id = useId();
   const [todoList, setTodoList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  
+  useEffect(() => {
+    //todo 목록 가져오기
+    function getTodos() {
+      const token = JSON.parse(localStorage.getItem("user")).access_token;
+      axios.get('https://www.pre-onboarding-selection-task.shop/todos', {headers: {
+        "Authorization": `Bearer ${token}`,
+      }}).then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
 
+    getTodos();
+  }, [])
+  
   //input에 입력된 값을 state에 저장함
   function handleTodoInput(e) {
     setInputValue(e.target.value);
@@ -45,9 +60,6 @@ export function TodoList() {
         return <Todo key={item.id} todo={item.todo} isCompleted={item.isCompleted} />
       })
       }
-      {/* <Todo>TODO 1</Todo>
-      <Todo>TODO 1</Todo>
-      <Todo>TODO 1</Todo> */}
     </ul>
   </div>
   )
