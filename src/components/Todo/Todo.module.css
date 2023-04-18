@@ -10,11 +10,17 @@
   align-items: center;
 }
 
-.input {
+.checkbox {
   width: 24px;
   height: 24px;
   margin-right: 10px;
   cursor: pointer
+}
+
+.input {
+  height: 24px;
+  width: 200px;
+  margin-right: 10px;
 }
 
 .span {
