@@ -3,7 +3,6 @@
   font-size: 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .label {
@@ -16,6 +15,10 @@
   height: 24px;
   margin-right: 10px;
   cursor: pointer
+}
+
+.span {
+  margin-right: 20px;
 }
 
 .buttons {

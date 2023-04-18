@@ -8,8 +8,8 @@ export function Todo({children}) {
         <span className={styles.span}>{children}</span>
       </label>
       <div className={styles.buttons}>
-        <button className={styles.edit}>수정</button>
-        <button className={styles.delete}>삭제</button>
+        <button className={styles.edit} data-testid="modify-button">수정</button>
+        <button className={styles.delete} data-testid="delete-button">삭제</button>
       </div>
     </li>
   )
