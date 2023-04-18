@@ -15,7 +15,8 @@ export function TodoList() {
       axios.get('https://www.pre-onboarding-selection-task.shop/todos', {headers: {
         "Authorization": `Bearer ${token}`,
       }}).then(response => {
-        console.log(response);
+        console.log(response.data);
+        setTodoList([...response.data]);
       })
       .catch(error => {
         console.log(error);
