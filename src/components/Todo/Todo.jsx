@@ -1,6 +1,6 @@
 import axios from 'axios';
 import styles from "./Todo.module.css";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export function Todo({id, todo, isCompleted, setTodoList}) {
   

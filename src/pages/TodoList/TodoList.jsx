@@ -42,6 +42,7 @@ export function TodoList() {
     }}).then(response => {
       console.log(response.data);
       setTodoList([...todoList, response.data]);
+      setInputValue("");
     })
     .catch(error => {
       console.log(error);
@@ -52,7 +53,7 @@ export function TodoList() {
   <div className='todoList'>
     <Heading1 className={styles.h1}>투두리스트</Heading1>
     <Form className={styles.form} legend="투두리스트">
-      <Input data-testid="new-todo-input" className={styles.input} name="todo" label="투두리스트" type="text" placeholder='할 일을 입력하세요' onChange={handleTodoInput} />
+      <Input data-testid="new-todo-input" className={styles.input} value={inputValue} name="todo" label="투두리스트" type="text" placeholder='할 일을 입력하세요' onChange={handleTodoInput} />
       <Button data-testid="new-todo-add-button" className={styles.button} onClick={()=>{createTodo(inputValue)}}>추가</Button>
     </Form>
     <ul>
