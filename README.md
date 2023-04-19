@@ -27,4 +27,4 @@ git clone 후, `npm install & npm start`를 실행하면 [http://localhost:3000]
 
 ## 🎉프로젝트 배포 주소
 
-[http://localhost:3000](http://localhost:3000)
+[https://rlawlsdn263.github.io/wanted-pre-onboarding-frontend/#/](https://rlawlsdn263.github.io/wanted-pre-onboarding-frontend/#/)
