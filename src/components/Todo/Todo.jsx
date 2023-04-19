@@ -7,6 +7,19 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
   const [update, setUpdate] = useState(false);
   const [newInput, setNewInput] = useState("");
 
+  // 삭제가 될 때마다 다시 getTodos가 실행됨
+  function getTodos() {
+    const token = JSON.parse(localStorage.getItem("user")).access_token;
+    axios.get('https://www.pre-onboarding-selection-task.shop/todos', {headers: {
+      "Authorization": `Bearer ${token}`,
+    }}).then(response => {
+      setTodoList([...response.data]);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   //체크버튼 수정
   function updateCheckTodo() {
     const token = JSON.parse(localStorage.getItem("user")).access_token;
@@ -17,7 +30,6 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
       "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     }}).then(response => {
-      console.log(response);
       getTodos();
     })
     .catch(error => {
@@ -35,23 +47,8 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
       "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     }}).then(response => {
-      console.log(response);
       getTodos();
       setUpdate(!update);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  // 삭제가 될 때마다 다시 getTodos가 실행됨
-  function getTodos() {
-    const token = JSON.parse(localStorage.getItem("user")).access_token;
-    axios.get('https://www.pre-onboarding-selection-task.shop/todos', {headers: {
-      "Authorization": `Bearer ${token}`,
-    }}).then(response => {
-      console.log(response.data);
-      setTodoList([...response.data]);
     })
     .catch(error => {
       console.log(error);
@@ -65,7 +62,6 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
      headers: {
         "Authorization": `Bearer ${token}`,
       }}).then(response => {
-        console.log(response);
         getTodos();
       })
       .catch(error => {

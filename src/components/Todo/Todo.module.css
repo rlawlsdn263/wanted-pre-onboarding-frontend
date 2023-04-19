@@ -18,9 +18,11 @@
 }
 
 .input {
-  height: 24px;
+  height: 32px;
   width: 200px;
   margin-right: 10px;
+  padding: 0 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .span {

@@ -19,7 +19,6 @@ export function Signin() {
       "Content-Type": "application/json",
     }})
     .then(response => {
-      console.log(response);
       // JWT 토큰을 localStorage에 저장함
       localStorage.setItem("user", JSON.stringify(response.data));
       alert("로그인 성공!");
@@ -35,18 +34,13 @@ export function Signin() {
     });
   }
 
-  function handleClick() {
-    // 이메일과 비밀번호로 사용자 정보가 있는 지 확인해줌
-    checkUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-  }
-
   return(
     <div className={styles.signin}>
       <Heading1 className={styles.h1}>로그인</Heading1>
       <Form legend="로그인" className={styles.form}>
         <Input data-testid="email-input" forwardRef={emailRef} className={styles.input} name="email" label="이메일" type="text" placeholder='test@test.com'></Input>
         <Input data-testid="password-input" forwardRef={passwordRef} className={styles.input} name="password" label="비밀번호" type="password" placeholder='12345678'></Input>
-        <Button data-testid="signup-button" onClick={handleClick} className={styles.button}>로그인</Button>
+        <Button data-testid="signup-button" onClick={()=>{checkUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);}} className={styles.button}>로그인</Button>
       </Form>
     </div>
   )

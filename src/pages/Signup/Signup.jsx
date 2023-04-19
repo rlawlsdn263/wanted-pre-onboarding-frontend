@@ -48,7 +48,6 @@ export function Signup() {
       "Content-Type": "application/json",
     }})
     .then(response => {
-      console.log(response);
       alert("회원가입 성공");
       navigate('/signin');
     })
