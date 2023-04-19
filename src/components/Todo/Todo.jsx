@@ -7,33 +7,23 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
   const [update, setUpdate] = useState(false);
   const [newInput, setNewInput] = useState("");
 
-  /* const [isChecked, setIsChecked] = useState(false);
-
-  function handleIsChecked(e) {
-    setIsChecked(e.target.checked);
-    updateChecked(e.target.checked)
-  } */
-
-  //Todo 업데이트 기능
-  /* function updateChecked(checked) {
+  //체크버튼 수정
+  function updateCheckTodo() {
     const token = JSON.parse(localStorage.getItem("user")).access_token;
     axios.put(`https://www.pre-onboarding-selection-task.shop/todos/${id}`, {
       todo: todo,
-      isCompleted: checked,
+      isCompleted: !isCompleted,
     }, {headers: {
       "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     }}).then(response => {
       console.log(response);
+      getTodos();
     })
     .catch(error => {
       console.log(error);
     });
-  } */
-
-  // useEffect(()=>{
-  //   getTodos();
-  // }, [deleteTodo(), updateTodo()])
+  }
 
   //업데이트 기능
   function updateTodo() {
@@ -94,7 +84,7 @@ export function Todo({id, todo, isCompleted, setTodoList}) {
   return(
     <li className={styles.todo}>
       <label className={styles.label}>
-        <input className={styles.checkbox} type="checkbox" /* checked={isChecked} onChange={handleIsChecked} */ />
+        <input className={styles.checkbox} type="checkbox" checked={isCompleted} onChange={updateCheckTodo} />
         {
           !update ? <span className={styles.span}>{todo}</span> : 
           <input className={styles.input} data-testid="modify-input" onChange={handleNewInput}/>
