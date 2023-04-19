@@ -1,5 +1,5 @@
 .todo {
-  margin: 10px 0;
+  margin: 20px 0;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -31,8 +31,17 @@
   width: 40px;
   height: 32px;
   cursor: pointer;
+  border: none;
+}
+
+.edit:hover, .delete:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.edit:focus, .delete:focus {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .edit {
-  margin-right: 4px;
+  margin-right: 8px;
 }

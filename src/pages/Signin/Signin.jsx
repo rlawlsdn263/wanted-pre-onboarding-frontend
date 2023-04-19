@@ -24,7 +24,7 @@ export function Signin() {
       localStorage.setItem("user", JSON.stringify(response.data));
       alert("로그인 성공!");
       //로그인 성공할 경우 todolist로 페이지 리디렉션을 해줌
-      navigate('/todolist');
+      navigate('/todo');
     })
     .catch(error => {
       console.log(error);

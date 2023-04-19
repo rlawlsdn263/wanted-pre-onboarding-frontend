@@ -56,7 +56,7 @@ export function TodoList() {
       <Input data-testid="new-todo-input" className={styles.input} value={inputValue} name="todo" label="투두리스트" type="text" placeholder='할 일을 입력하세요' onChange={handleTodoInput} />
       <Button data-testid="new-todo-add-button" className={styles.button} onClick={()=>{createTodo(inputValue)}}>추가</Button>
     </Form>
-    <ul>
+    <ul className={styles.ul}>
       {
       todoList.map((item) => {
         return <Todo key={item.id} todo={item.todo} isCompleted={item.isCompleted} id={item.id} setTodoList={setTodoList} handleTodoInput={handleTodoInput}/>
