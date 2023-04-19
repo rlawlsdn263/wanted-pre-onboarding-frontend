@@ -16,7 +16,7 @@ function App() {
           <Link to="/signin">로그인</Link>
         </li>
         <li>
-          <Link to="/todolist">투두리스트</Link>
+          <Link to="/todo">투두리스트</Link>
         </li>
       </ul>
       <Routes>
@@ -26,7 +26,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
         </Route>
         <Route element={<PrivateRoutes2 />}>
-          <Route path="/todolist" element={<TodoList />} />
+          <Route path="/todo" element={<TodoList />} />
         </Route>
       </Routes>
     </div>
