@@ -1,3 +1,7 @@
+import styles from "./Home.module.css";
+
 export function Home() {
-  return <div>홈 페이지</div>
+  return (
+    <div className={styles.home}></div>
+  )
 }

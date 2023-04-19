@@ -1,0 +1,8 @@
+.home {
+  width: 1280px;
+  height: 720px;
+  background-image: url("../../assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 40px;
+}

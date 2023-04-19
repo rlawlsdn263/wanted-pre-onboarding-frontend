@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
 body {
@@ -11,16 +12,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .navbar {
@@ -28,7 +21,8 @@ code {
   justify-content: center;
   padding: 10px 0;
   margin-bottom: 20px;
-  background-color: #181818;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   top: 0;
@@ -36,11 +30,11 @@ code {
 }
 
 .navbar li {
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .navbar li a {
-  color: white;
+  color: rgb(51, 51, 51);
   font-weight: 600;
   text-decoration: none;
 }
