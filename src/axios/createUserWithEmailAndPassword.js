@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 
 // 회원가입 통신 함수
 export function createUserWithEmailAndPassword(emailRefCurrentValue, passwordRefCurrentValue, buttonRefCurrentDisabled, navigate) {
-    axios.post('https://www.pre-onboarding-selection-task.shop/auth/signup', {
+  axiosInstance.post('/auth/signup', {
       email: emailRefCurrentValue,
       password: passwordRefCurrentValue,
     }, {headers: {

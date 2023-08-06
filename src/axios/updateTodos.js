@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 import { getTodos } from './getTodos';
 
 //업데이트 기능
 export function updateTodos(newInput, isCompleted, setTodoList, update, setUpdate, id) {
     const token = JSON.parse(localStorage.getItem("user")).access_token;
-    axios.put(`https://www.pre-onboarding-selection-task.shop/todos/${id}`, {
+    axiosInstance.put(`/todos/${id}`, {
       todo: newInput,
       isCompleted: isCompleted,
     }, {headers: {

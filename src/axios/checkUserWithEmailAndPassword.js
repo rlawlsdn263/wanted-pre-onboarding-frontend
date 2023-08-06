@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 
 //유저정보를 확인해주는 함수
 export function checkUserWithEmailAndPassword(emailRefCurrentValue, passwordRefCurrentValue, navigate) {
-    axios.post('https://www.pre-onboarding-selection-task.shop/auth/signin', {
+  axiosInstance.post('/auth/signin', {
       email: emailRefCurrentValue,
       password: passwordRefCurrentValue,
     }, {headers: {
