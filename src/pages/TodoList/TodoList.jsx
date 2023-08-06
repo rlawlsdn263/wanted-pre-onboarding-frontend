@@ -1,7 +1,7 @@
 import { Form, Heading1, Input, Button, Todo } from '@/components';
 import styles from "./TodoList.module.css";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getTodos, createTodos } from '@/axios/_index';
 
 export function TodoList() {
 
@@ -9,20 +9,7 @@ export function TodoList() {
   const [inputValue, setInputValue] = useState("");
   
   useEffect(() => {
-    //todo 목록 가져오기
-    function getTodos() {
-      const token = JSON.parse(localStorage.getItem("user")).access_token;
-      axios.get('https://www.pre-onboarding-selection-task.shop/todos', {headers: {
-        "Authorization": `Bearer ${token}`,
-      }}).then(response => {
-        setTodoList([...response.data]);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    }
-
-    getTodos();
+    getTodos(setTodoList);
   }, [])
   
   //input에 입력된 값을 state에 저장함
@@ -30,29 +17,12 @@ export function TodoList() {
     setInputValue(e.target.value);
   }
 
-  //todo 추가기능
-  function createTodo(todo) {
-    const token = JSON.parse(localStorage.getItem("user")).access_token;
-    axios.post('https://www.pre-onboarding-selection-task.shop/todos', {
-      todo: todo,
-    }, {headers: {
-      "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json",
-    }}).then(response => {
-      setTodoList([...todoList, response.data]);
-      setInputValue("");
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
   return (
   <div className='todoList'>
     <Heading1 className={styles.h1}>투두리스트</Heading1>
     <Form className={styles.form} legend="투두리스트">
       <Input data-testid="new-todo-input" className={styles.input} value={inputValue} name="todo" label="투두리스트" type="text" placeholder='할 일을 입력하세요' onChange={handleTodoInput} />
-      <Button data-testid="new-todo-add-button" className={styles.button} onClick={()=>{createTodo(inputValue)}}>추가</Button>
+      <Button data-testid="new-todo-add-button" className={styles.button} onClick={()=>{createTodos(inputValue, setInputValue, todoList, setTodoList)}}>추가</Button>
     </Form>
     <ul className={styles.ul}>
       {
