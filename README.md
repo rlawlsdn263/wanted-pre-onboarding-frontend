@@ -33,6 +33,6 @@ git clone 후, `npm install & npm start`를 실행하면 [http://localhost:3000]
 ## ⭕테스트용 계정
 
 ```
-ID: rlawlsdn263@test.com
+ID: rlawlsdn@test.com
 PW: 12345678
 ```
